@@ -10,6 +10,7 @@ from enocean.protocol.constants import PACKET, RORG
 import sys
 import traceback
 import data_manager
+import datetime
 
 
 try:
@@ -28,23 +29,22 @@ while communicator.is_alive():
         # Loop to empty the queue...
         packet = communicator.receive.get(block=True, timeout=1)
 
-
-        # USEFUL PART START
-
         if packet.packet_type == PACKET.RADIO_ERP1 and packet.rorg == RORG.BS4:
 
-            # GET TEMPERATURE
-            # parse packet with given FUNC and TYPE
+            # Get temperature from eep packet
             for k in packet.parse_eep(0x02, 0x05):
                 temperature = packet.parsed[k].get('value')
 
-            # GET SENSOR_ID
-            packet_sender = packet.data[6:]
-            for i in range(len(packet_sender)):
-                packet_sender[i] = hex(packet_sender[i]).split('x')[-1]
-            sensor_id = '%s%s%s%s' % 
-
-        # USEFUL PART END
+            # Get sensor_id as a unique 6-character string
+            packet_id = packet.data[6:]
+            packet_id.append('')
+            for i in range(len(packet_id) - 1):
+                packet_id[len(packet_id) - 1] += str(hex(packet_id[i]).split('x')[-1])
+            sensor_id = packet_id[len(packet_id) - 1]
+            
+            # Write data into data_manager.py
+            if data_manager.write_data(sensor_id, temperature):
+                print('Received data from ' + sensor_id + ', WE NEED TIME')
 
     except queue.Empty:
         continue
