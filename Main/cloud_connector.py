@@ -3,3 +3,7 @@
 # Detailed: https://learn.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed
 # Quick Guide: https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys
 # Might need bash scripts instead of python scripts (linux command line scripts)
+
+
+# Then, continuously read data from data_manager.csv
+# Write data into database.csv
