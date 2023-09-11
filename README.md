@@ -4,9 +4,8 @@
 Jobscopes:
 1. serial_receiver.py - GK
 2. data_manager.py - Jianing
-3. cloud_connector.py - Yuyang
-4. cloud_receiver.py - Gian
-5. cloud_webserver.py - Dayong, Liyana
+3. cloud_connector.py - Yuyang and Gian
+4. cloud_webserver.py - Dayong, Liyana
 
 
 Installation Guide:
