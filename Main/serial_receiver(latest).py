@@ -26,8 +26,16 @@ except ImportError:
 
 with open('data_manager.csv', 'w') as csv_file:
     csvwriter = csv.writer(csv_file)
-                
     Column_list = ["Date", "Time", "Address" ,"Sensor ID", "Temperature", "Acceleration X", "Acceleration Y", "Acceleration Z", "Magnet Contact"]
+    csvwriter.writerow(Column_list)
+    csvwriter.writerow('\n')
+
+
+
+def writeline(current_day, current_time, address, sensor_id, TMP, ACX, ACY, ACZ, CO):
+    csvwriter.writerow([current_day, current_time, address, sensor_id, TMP, ACX, ACY, ACZ, CO])
+    csvwriter.writerow('\n')
+    return
 
 
 
@@ -111,10 +119,11 @@ while communicator.is_alive():
             print(current_time)
             print(current_day)
 
-            
+            csvwriter.writerow([current_day, current_time, address, sensor_id, TMP, ACX, ACY, ACZ, CO])
+            csvwriter.writerow('\n')
 
             
-            csvwriter.writerow([current_day, current_time, address, sensor_id, TMP, ACX, ACY, ACZ, CO])
+            
 
 
 
