@@ -33,8 +33,6 @@ print('The Base ID of your module is %s.' % enocean.utils.to_hex_string(communic
 while communicator.is_alive():
     try:
         # Loop to empty the queue...
-        
-        
         packet = communicator.receive.get(block=True, timeout=0.5)
 
         if packet.packet_type == PACKET.RADIO_ERP1 and packet.rorg == RORG.VLD:
@@ -48,7 +46,6 @@ while communicator.is_alive():
             sensor_id = packet_id[len(packet_id) - 1]
             print(sensor_id)                                #Display for testing(Success)
 
-            
 
             current_datetime = datetime.now()
             current_time = current_datetime.strftime("%H:%M:%S")
