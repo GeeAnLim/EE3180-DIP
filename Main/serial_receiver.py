@@ -46,6 +46,23 @@ while communicator.is_alive():
             sensor_id = packet_id[len(packet_id) - 1]
             print(sensor_id)                                #Display for testing(Success)
 
+            if sensor_id == '42261f3':
+                address = "Blk A01 #02-1234, S760A01"
+
+            elif sensor_id == '42262a':
+                address = "Blk B01 #02-1234, S760B01"
+
+            elif sensor_id == '4226076':
+                address = "Blk C01 #02-1234, S760C01"
+
+            elif sensor_id == '4226087':
+                address = "Blk D01 #02-1234, S760D01"
+
+            elif sensor_id == '4226222':
+                address = "Blk E01 #02-1234, S760E01"
+
+            elif sensor_id == '42261EA':
+                address = "Blk F01 #02-1234, S760F01"
 
             current_datetime = datetime.now()
             current_time = current_datetime.strftime("%H:%M:%S")
