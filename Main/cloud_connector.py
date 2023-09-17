@@ -23,7 +23,13 @@ def write_data(dataframe):
     return
 
 
-connection = psycopg2.connect(user="dbfirenet_user", password="G9Fw38n8WjMfN4zTBydkxYqZFefZSiM4", host="dpg-ck0lntu3ktkc73f98tcg-a.singapore-postgres.render.com", port="5432", database="dbfirenet")
+connection = psycopg2.connect(
+    user="dbfirenet_user", 
+    password="G9Fw38n8WjMfN4zTBydkxYqZFefZSiM4", 
+    host="dpg-ck0lntu3ktkc73f98tcg-a.singapore-postgres.render.com", 
+    port="5432", 
+    database="dbfirenet"
+)
 cursor = connection.cursor()
 
 
