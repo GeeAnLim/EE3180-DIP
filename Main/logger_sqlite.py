@@ -33,11 +33,20 @@ class Logger:
         # conn = sqlite3.connect('datalogger.db')
         # cursor = conn.cursor()
         
-        for table, data in self.data_dict.items():
-            cnt = len(data)-1
-            params = '?' + ',?'*cnt
-            cursor.executemany(f"INSERT INTO {table} VALUES({params})", data)
-            connection.commit()
+        create_script = ''' CREATE TABLE IF NOT EXISTS employee (
+                                id      int PRIMARY KEY,
+                                name    varchar(40) NOT NULL,
+                                salary  int,
+                                dept_id varchar(30)
+        )'''
+        cursor.execute(create_script)
+        connection.commit()
+
+        # for table, data in self.data_dict.items():
+        #     cnt = len(data)-1
+        #     params = '?' + ',?'*cnt
+        #     cursor.executemany(f"INSERT INTO {table} VALUES({params})", data)
+        #     connection.commit()
 
         connection.close()
 
